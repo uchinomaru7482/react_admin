@@ -1,12 +1,14 @@
+import React from "react"
 import { Link } from "react-router-dom";
 
-function Dashboard() {
+const Dashboard: React.VFC = () => {
+  let hoge = 123;
   return (
     <>
       <main>
         <h2>Dashboard</h2>
         <p>
-          hoge huga piyo
+          hoge huga piyo{hoge}
         </p>
       </main>
       <nav>
