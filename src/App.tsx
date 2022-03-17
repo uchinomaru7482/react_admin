@@ -17,7 +17,7 @@ function App() {
       <div className="flex-1 flex-col overflow-hidden">
         <Header toggleIsOpenSidebar={toggleIsOpenSidebar} />
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/user/list" element={<UserList />} />
         </Routes>
       </div>
