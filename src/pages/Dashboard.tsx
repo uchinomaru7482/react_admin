@@ -1,7 +1,6 @@
 import React from "react"
 
 const Dashboard: React.VFC = () => {
-  let hoge = 123;
   return (
     <>
       <div className="frame">

@@ -1,6 +1,11 @@
 import React from "react"
 
 const UserList: React.VFC = () => {
+  let userList = [
+    {id: 1, name: "Tanaka", age: 14},
+    {id: 2, name: "Sato", age: 23},
+    {id: 3, name: "Kato", age: 31}
+  ];
   return (
     <>
       <div className="frame">
@@ -13,16 +18,16 @@ const UserList: React.VFC = () => {
                   <th>ID</th>
                   <th>Name</th>
                   <th>Age</th>
-                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><p>1</p></td>
-                  <td><p>Kenta</p></td>
-                  <td><p>23</p></td>
-                  <td><p>User</p></td>
-                </tr>
+                {userList.map((user) =>
+                  <tr>
+                    <td><p>{user.id}</p></td>
+                    <td><p>{user.name}</p></td>
+                    <td><p>{user.age}</p></td>
+                  </tr>
+                )}
               </tbody>
             </table>
             <div className="pagination">
