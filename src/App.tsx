@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate } from "react-router-dom";
 import './App.css';
 import Dashboard from "./pages/Dashboard";
 import UserList from "./pages/user/List";
@@ -8,11 +8,18 @@ import Sidebar from "./components/Sidebar";
 import Signin from "./pages/Signin"
 
 function App() {
+  const navigate = useNavigate();
   const [isOpenSidebar, setIsOpenSidebar] = useState(false);
   const toggleIsOpenSidebar = () => setIsOpenSidebar(!isOpenSidebar);
   const [isAuth, setIsAuth] = useState(false);
   const signin = () => setIsAuth(true);
   const signout = () => setIsAuth(false);
+
+  useEffect(() => {
+    if (!isAuth) {
+      navigate("/signin");
+    }
+  }, []);
 
   if (isAuth) {
     return (

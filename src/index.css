@@ -71,11 +71,15 @@ code {
 }
 
 .form-input {
-  @apply w-full mt-2 p-2 border rounded-md focus:outline-none focus:ring focus:border-indigo-600;
+  @apply w-full mt-2 mb-1 p-2 border rounded-md focus:outline-none focus:ring focus:border-indigo-600;
 }
 select.form-input {
   padding-top: 0.65rem;
   padding-bottom: 0.65rem;
+}
+
+.form-err-msg {
+  @apply text-left text-pink-500;
 }
 
 .form-submit {
