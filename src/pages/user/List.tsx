@@ -22,7 +22,7 @@ const UserList: React.VFC = () => {
               </thead>
               <tbody>
                 {userList.map((user) =>
-                  <tr>
+                  <tr key={user.id}>
                     <td><p>{user.id}</p></td>
                     <td><p>{user.name}</p></td>
                     <td><p>{user.age}</p></td>
