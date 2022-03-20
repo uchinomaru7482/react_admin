@@ -21,13 +21,19 @@ const UserList: React.VFC = () => {
                 </tr>
               </thead>
               <tbody>
-                {userList.map((user) =>
+                {userList.map((user) => (
                   <tr key={user.id}>
-                    <td><p>{user.id}</p></td>
-                    <td><p>{user.name}</p></td>
-                    <td><p>{user.age}</p></td>
+                    <td>
+                      <p>{user.id}</p>
+                    </td>
+                    <td>
+                      <p>{user.name}</p>
+                    </td>
+                    <td>
+                      <p>{user.age}</p>
+                    </td>
                   </tr>
-                )}
+                ))}
               </tbody>
             </table>
             <div className='pagination'>

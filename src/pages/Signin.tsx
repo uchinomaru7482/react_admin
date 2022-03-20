@@ -21,9 +21,16 @@ const schema = yup.object({
 
 const Signin: React.VFC<Props> = (props) => {
   const navigate = useNavigate()
-  const { register, handleSubmit, formState: { errors } } = useForm<IFormInputs>({ resolver: yupResolver(schema) })
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<IFormInputs>({ resolver: yupResolver(schema) })
   const signin = (data: IFormInputs) => {
-    if (data.mailAddress === 'admin@example.com' && data.password === 'administrator') {
+    if (
+      data.mailAddress === 'admin@example.com' &&
+      data.password === 'administrator'
+    ) {
       props.signin()
       navigate('/dashboard')
     }
@@ -34,21 +41,31 @@ const Signin: React.VFC<Props> = (props) => {
       <div className='mx-auto'>
         <div className='text-center'>
           <BiWrench className='inline-block w-16 h-16 pb-5 pr-5' />
-          <h2 className='text-4xl text-center text-gray-700 font-medium inline-block pr-5'>React Admin</h2>
+          <h2 className='text-4xl text-center text-gray-700 font-medium inline-block pr-5'>
+            React Admin
+          </h2>
         </div>
         <div className='bg-white rounded-md shadow-md w-96 p-10 mx-auto'>
           <form onSubmit={handleSubmit(signin)}>
             <div className='mb-5'>
-              <label className='block text-left text-gray-700'>Mail Address</label>
+              <label className='block text-left text-gray-700'>
+                Mail Address
+              </label>
               <input className='form-input' {...register('mailAddress')} />
-              <p className='form-err-msg' >{errors.mailAddress?.message}</p>
+              <p className='form-err-msg'>{errors.mailAddress?.message}</p>
             </div>
             <div className='mb-11'>
               <label className='block text-left text-gray-700'>Password</label>
-              <input className='form-input' type='password' {...register('password')} />
+              <input
+                className='form-input'
+                type='password'
+                {...register('password')}
+              />
               <p className='form-err-msg'>{errors.password?.message}</p>
             </div>
-            <button className='form-submit w-full' type='submit'>Signin</button>
+            <button className='form-submit w-full' type='submit'>
+              Signin
+            </button>
           </form>
         </div>
       </div>
