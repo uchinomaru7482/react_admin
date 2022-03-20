@@ -1,18 +1,18 @@
-import React from "react"
+import React from 'react'
 
 const UserList: React.VFC = () => {
-  let userList = [
-    {id: 1, name: "Tanaka", age: 14},
-    {id: 2, name: "Sato", age: 23},
-    {id: 3, name: "Kato", age: 31}
-  ];
+  const userList = [
+    { id: 1, name: 'Tanaka', age: 14 },
+    { id: 2, name: 'Sato', age: 23 },
+    { id: 3, name: 'Kato', age: 31 }
+  ]
   return (
     <>
-      <div className="frame">
-        <h2 className="page-title">UserList</h2>
-        <div className="py-4 overflow-x-auto">
-          <div className="wrap-table">
-            <table className="table">
+      <div className='frame'>
+        <h2 className='page-title'>UserList</h2>
+        <div className='py-4 overflow-x-auto'>
+          <div className='wrap-table'>
+            <table className='table'>
               <thead>
                 <tr>
                   <th>ID</th>
@@ -30,9 +30,9 @@ const UserList: React.VFC = () => {
                 )}
               </tbody>
             </table>
-            <div className="pagination">
+            <div className='pagination'>
               <div>
-                <button className="mr-2">next</button>
+                <button className='mr-2'>next</button>
                 <button>prev</button>
               </div>
             </div>
@@ -40,7 +40,7 @@ const UserList: React.VFC = () => {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default UserList;
+export default UserList

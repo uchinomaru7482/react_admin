@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 const Dashboard: React.VFC = () => {
   return (
@@ -7,7 +7,7 @@ const Dashboard: React.VFC = () => {
         <h2 className="page-title">Dashboard</h2>
       </div>
     </>
-  );
+  )
 }
 
-export default Dashboard;
+export default Dashboard
