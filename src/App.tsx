@@ -12,7 +12,7 @@ const App: React.VFC = () => {
   const toggleIsOpenSidebar = () => setIsOpenSidebar(!isOpenSidebar)
   const [isAuth, setIsAuth] = useState(false)
   const signin = () => setIsAuth(true)
-  const signout: () => void = () => setIsAuth(false)
+  const signout = () => setIsAuth(false)
 
   useEffect(() => {
     if (!isAuth) {
