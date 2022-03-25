@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { BiBell, BiX } from 'react-icons/bi'
-import { SettingContext, ToastKind } from '../App'
+import { ToastContext, ToastKind } from '../contexts/ToastContext'
 
 type Props = {
   toastType: string
@@ -23,7 +23,7 @@ const Toast: React.VFC<Props> = (props) => {
     bg = 'bg-pink-100 '
     text = 'text-pink-700 '
   }
-  const setting = useContext(SettingContext)
+  const toast = useContext(ToastContext)
 
   return (
     <>
@@ -46,7 +46,7 @@ const Toast: React.VFC<Props> = (props) => {
             </p>
             <button
               type='button'
-              onClick={() => setting.removeToast(props.indexNum)}
+              onClick={() => toast.removeToast(props.indexNum)}
               className={
                 text +
                 'w-5 h-5 ml-2 opacity-50 focus:opacity-100 hover:opacity-75'
