@@ -1,5 +1,6 @@
-import React, { useRef } from 'react'
+import React, { useRef, useContext } from 'react'
 import Modal from '../components/Modal'
+import { SettingContext, ToastKind } from '../App'
 
 interface Handler {
   showModal(): void
@@ -7,6 +8,7 @@ interface Handler {
 
 const Dashboard: React.VFC = () => {
   const childRef = useRef({} as Handler)
+  const setting = useContext(SettingContext)
 
   return (
     <>
@@ -21,6 +23,16 @@ const Dashboard: React.VFC = () => {
         <button onClick={() => childRef.current.showModal()}>
           Display Modal
         </button>
+        <div>
+          <button onClick={() => setting.addToast(ToastKind.Success)}>
+            Success
+          </button>
+        </div>
+        <div>
+          <button onClick={() => setting.addToast(ToastKind.Error)}>
+            Error
+          </button>
+        </div>
       </div>
     </>
   )
