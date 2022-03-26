@@ -1,7 +1,7 @@
 import { useImperativeHandle, forwardRef, useState } from 'react'
 import { BiBell } from 'react-icons/bi'
 
-interface Handler {
+type Handler = {
   showModal(): void
 }
 

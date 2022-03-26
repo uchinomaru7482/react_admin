@@ -54,6 +54,7 @@ const App: React.VFC = () => {
       <div className='App flex items-center h-screen bg-gray-200'>
         <Routes>
           <Route path='/signin' element={<Signin signin={signin} />} />
+          <Route path='/dashboard' element={<Dashboard />} />
         </Routes>
       </div>
     )

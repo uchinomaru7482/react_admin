@@ -9,7 +9,7 @@ type Props = {
   signin: () => void
 }
 
-interface IFormInputs {
+type IFormInputs = {
   mailAddress: string
   password: string
 }
