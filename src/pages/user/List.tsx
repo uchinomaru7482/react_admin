@@ -18,6 +18,7 @@ const UserList: React.VFC = () => {
                   <th>ID</th>
                   <th>Name</th>
                   <th>Age</th>
+                  <th>Edit</th>
                 </tr>
               </thead>
               <tbody>
@@ -31,6 +32,11 @@ const UserList: React.VFC = () => {
                     </td>
                     <td>
                       <p>{user.age}</p>
+                    </td>
+                    <td>
+                      <button className='warn-button' type='button'>
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 ))}
