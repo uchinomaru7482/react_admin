@@ -1,5 +1,5 @@
 import React from 'react'
-import { BiBarChartAlt2, BiUser } from 'react-icons/bi'
+import { BiBarChartAlt2, BiUser, BiUserPlus } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 
 type Props = {
@@ -31,6 +31,13 @@ const Sidebar: React.VFC<Props> = (props) => {
           >
             <BiUser className='h-6 w-6 mr-3' />
             <span className='text-xl'>UserList</span>
+          </Link>
+          <Link
+            to='/user/create'
+            className='flex items-center px-6 py-4 text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100'
+          >
+            <BiUserPlus className='h-6 w-6 mr-3' />
+            <span className='text-xl'>UserCreate</span>
           </Link>
         </nav>
       </div>
