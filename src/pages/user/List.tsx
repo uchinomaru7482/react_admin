@@ -38,8 +38,8 @@ const UserList: React.VFC = () => {
             </table>
             <div className='pagination'>
               <div>
-                <button className='mr-2'>next</button>
-                <button>prev</button>
+                <button className='mr-2'>prev</button>
+                <button>next</button>
               </div>
             </div>
           </div>
