@@ -6,6 +6,7 @@ import ToastProvider from './contexts/ToastContext'
 import Dashboard from './pages/Dashboard'
 import Signin from './pages/Signin'
 import UserList from './pages/user/List'
+import UserCreate from './pages/user/Create'
 
 const App: React.VFC = () => {
   const navigate = useNavigate()
@@ -42,6 +43,7 @@ const App: React.VFC = () => {
               <Route path='/signin' element={<Signin signin={signin} />} />
               <Route path='/dashboard' element={<Dashboard />} />
               <Route path='/user/list' element={<UserList />} />
+              <Route path='/user/create' element={<UserCreate />} />
             </Routes>
           </div>
         </ToastProvider>
@@ -52,8 +54,6 @@ const App: React.VFC = () => {
       <div className='App flex items-center h-screen bg-gray-200'>
         <Routes>
           <Route path='/signin' element={<Signin signin={signin} />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/user/list' element={<UserList />} />
         </Routes>
       </div>
     )

@@ -20,6 +20,22 @@ code {
   @apply container mx-auto px-8 pt-6 overflow-scroll;
 }
 
+.card {
+  @apply bg-white rounded-md shadow-md p-6 mt-4;
+}
+
+.card label {
+  @apply text-gray-500 font-bold;
+}
+
+.card-body {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4;
+}
+
+.card-action {
+  @apply flex justify-end mt-4;
+}
+
 .page-title {
   @apply text-2xl font-bold text-gray-700 leading-tight mr-auto text-left;
 }
@@ -84,6 +100,10 @@ select.form-input {
 
 .form-submit {
   @apply px-4 py-2 bg-gray-800 text-gray-200 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700;
+}
+
+.warn-button {
+  @apply px-4 py-2 m-1 bg-pink-600 text-gray-200 rounded-md hover:bg-pink-500 focus:outline-none focus:bg-pink-500;
 }
 
 /* toast */

@@ -18,6 +18,7 @@ const UserList: React.VFC = () => {
                   <th>ID</th>
                   <th>Name</th>
                   <th>Age</th>
+                  <th>Edit</th>
                 </tr>
               </thead>
               <tbody>
@@ -32,14 +33,19 @@ const UserList: React.VFC = () => {
                     <td>
                       <p>{user.age}</p>
                     </td>
+                    <td>
+                      <button className='warn-button' type='button'>
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
             <div className='pagination'>
               <div>
-                <button className='mr-2'>next</button>
-                <button>prev</button>
+                <button className='mr-2'>prev</button>
+                <button>next</button>
               </div>
             </div>
           </div>
