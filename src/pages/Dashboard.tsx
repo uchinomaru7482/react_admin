@@ -12,6 +12,7 @@ import {
   Title
 } from 'chart.js'
 import { Doughnut, Line } from 'react-chartjs-2'
+
 import SimpleCard from '../components/dashboard/SimpleCard'
 
 ChartJS.register(
@@ -25,7 +26,7 @@ ChartJS.register(
   Legend
 )
 
-const Dashboard: React.VFC = () => {
+const Dashboard: React.VFC = React.memo(() => {
   const doughOptions = {
     responsive: true,
     plugins: {
@@ -111,6 +112,6 @@ const Dashboard: React.VFC = () => {
       </div>
     </>
   )
-}
+})
 
 export default Dashboard

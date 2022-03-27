@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UserList: React.VFC = () => {
+const UserList: React.VFC = React.memo(() => {
   const userList = [
     { id: 1, name: 'Tanaka', age: 14 },
     { id: 2, name: 'Sato', age: 23 },
@@ -53,6 +53,6 @@ const UserList: React.VFC = () => {
       </div>
     </>
   )
-}
+})
 
 export default UserList

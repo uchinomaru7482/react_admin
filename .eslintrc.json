@@ -26,6 +26,7 @@
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "@typescript-eslint/no-misused-promises": "off",
-    "space-before-function-paren": "off"
+    "space-before-function-paren": "off",
+    "react/display-name": "off"
   }
 }

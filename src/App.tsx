@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
+
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
 import ToastProvider from './contexts/ToastContext'
@@ -28,10 +29,9 @@ const App: React.VFC = () => {
         <ToastProvider>
           <div
             onClick={toggleIsOpenSidebar}
-            className={
-              (isOpenSidebar ? 'block' : 'hidden') +
-              ' fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden'
-            }
+            className={`${
+              isOpenSidebar ? 'block' : 'hidden'
+            } fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden`}
           />
           <Sidebar isOpenSidebar={isOpenSidebar} />
           <div className='flex-1 flex-col overflow-hidden'>

@@ -3,10 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+
 import Modal from '../../components/Modal'
 import { ToastContext, ToastKind } from '../../contexts/ToastContext'
 
-type IFormInputs = {
+type FormInput = {
   name: string
   age: number
   password: string
@@ -22,7 +23,7 @@ const schema = yup.object({
   password: yup.string().required().max(40)
 })
 
-const UserCreate: React.VFC = () => {
+const UserCreate: React.VFC = React.memo(() => {
   const navigate = useNavigate()
   const childRef = useRef({} as Handler)
   const toast = useContext(ToastContext)
@@ -31,7 +32,7 @@ const UserCreate: React.VFC = () => {
     handleSubmit,
     getValues,
     formState: { errors }
-  } = useForm<IFormInputs>({ resolver: yupResolver(schema) })
+  } = useForm<FormInput>({ resolver: yupResolver(schema) })
 
   const create = () => {
     const data = getValues()
@@ -92,6 +93,6 @@ const UserCreate: React.VFC = () => {
       </div>
     </>
   )
-}
+})
 
 export default UserCreate

@@ -11,6 +11,7 @@ const Header: React.VFC<Props> = (props) => {
   const navigate = useNavigate()
   const [isOpenMenu, setIsOpenMenu] = useState(false)
   const toggleIsOpenMenu = () => setIsOpenMenu(!isOpenMenu)
+  const toggleIsOpenSidebar = () => props.toggleIsOpenSidebar()
   const signout = () => {
     props.signout()
     navigate('/signin')
@@ -20,7 +21,7 @@ const Header: React.VFC<Props> = (props) => {
     <>
       <header className='flex justify-between items-center py-4 px-6 bg-white border-b-4 border-indigo-600'>
         <div className='flex items-center'>
-          <button onClick={() => props.toggleIsOpenSidebar()}>
+          <button onClick={toggleIsOpenSidebar}>
             <BiMenu className='border border-gray-500 rounded text-gray-500 h-7 w-7 p-1 mr-3' />
           </button>
           <span className='text-gray-500 text-2xl mx-2 font-semibold'>

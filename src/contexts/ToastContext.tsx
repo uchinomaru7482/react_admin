@@ -1,12 +1,13 @@
 import React, { useReducer, ReactNode } from 'react'
+
 import Toast from '../components/Toast'
 
-type ToastContextType = {
+type ToastContext = {
   addToast: (kind: string) => void
   removeToast: (indexNum: number) => void
 }
 
-type ToastType = {
+type Toast = {
   kind: string
   timeoutNum: NodeJS.Timeout | null
 }
@@ -15,7 +16,7 @@ type Props = {
   children: ReactNode
 }
 
-export const ToastContext = React.createContext<ToastContextType>(
+export const ToastContext = React.createContext<ToastContext>(
   {} as {
     addToast: (kind: string) => void
     removeToast: (indexNum: number) => void
@@ -28,7 +29,7 @@ export enum ToastKind {
 }
 
 const ToastProvider: React.VFC<Props> = ({ children }) => {
-  const reducer = (state: Array<ToastType>, action: ToastType) => {
+  const reducer = (state: Array<Toast>, action: Toast) => {
     const newState = state.slice()
     switch (action.kind) {
       case 'Success':

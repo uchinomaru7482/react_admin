@@ -9,7 +9,7 @@ type Props = {
   signin: () => void
 }
 
-type IFormInputs = {
+type FormInput = {
   mailAddress: string
   password: string
 }
@@ -25,8 +25,8 @@ const Signin: React.VFC<Props> = (props) => {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<IFormInputs>({ resolver: yupResolver(schema) })
-  const signin = (data: IFormInputs) => {
+  } = useForm<FormInput>({ resolver: yupResolver(schema) })
+  const signin = (data: FormInput) => {
     if (
       data.mailAddress === 'admin@example.com' &&
       data.password === 'administrator'
