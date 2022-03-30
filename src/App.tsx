@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
-import Header from './components/Header'
-import Sidebar from './components/Sidebar'
+import Header from './components/organisms/Header'
+import Sidebar from './components/organisms/Sidebar'
 import ToastProvider from './contexts/ToastContext'
 import Dashboard from './pages/Dashboard'
 import Signin from './pages/Signin'

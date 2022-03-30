@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { BiBell, BiX } from 'react-icons/bi'
 
-import { ToastContext, ToastKind } from '../contexts/ToastContext'
+import { ToastContext, ToastKind } from '../../contexts/ToastContext'
 
 type Props = {
   toastType: string

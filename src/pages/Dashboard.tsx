@@ -13,7 +13,7 @@ import {
 } from 'chart.js'
 import { Doughnut, Line } from 'react-chartjs-2'
 
-import SimpleCard from '../components/dashboard/SimpleCard'
+import SimpleCard from '../components/organisms/SimpleCard'
 
 ChartJS.register(
   ArcElement,

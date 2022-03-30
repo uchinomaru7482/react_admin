@@ -1,6 +1,6 @@
 import React, { useReducer, ReactNode } from 'react'
 
-import Toast from '../components/Toast'
+import Toast from '../components/organisms/Toast'
 
 type ToastContext = {
   addToast: (kind: string) => void

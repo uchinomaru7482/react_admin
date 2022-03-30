@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
-import Modal from '../../components/Modal'
+import Modal from '../../components/organisms/Modal'
 import { ToastContext, ToastKind } from '../../contexts/ToastContext'
 
 type FormInput = {
