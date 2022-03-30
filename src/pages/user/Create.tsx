@@ -1,10 +1,13 @@
 import React, { useRef, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
+import { useForm, FormProvider } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
 import Modal from '../../components/organisms/Modal'
+import Button from '../../components/atoms/Button'
+import FormInput from '../../components/atoms/FormInput'
+import FormInputError from '../../components/atoms/FormInputError'
 import { ToastContext, ToastKind } from '../../contexts/ToastContext'
 
 type FormInput = {
@@ -27,15 +30,17 @@ const UserCreate: React.VFC = React.memo(() => {
   const navigate = useNavigate()
   const childRef = useRef({} as Handler)
   const toast = useContext(ToastContext)
-  const {
+  /* const {
     register,
     handleSubmit,
     getValues,
     formState: { errors }
-  } = useForm<FormInput>({ resolver: yupResolver(schema) })
+  } = useForm<FormInput>({ resolver: yupResolver(schema) }) */
+
+  const methods = useForm<FormInput>({ resolver: yupResolver(schema) })
 
   const create = () => {
-    const data = getValues()
+    const data = methods.getValues()
     // TODO:ユーザデータ登録処理
     console.log(data)
     toast.addToast(ToastKind.Success)
@@ -47,42 +52,40 @@ const UserCreate: React.VFC = React.memo(() => {
       <div className='frame'>
         <h2 className='page-title'>UserCreate</h2>
         <div className='card'>
-          <form onSubmit={handleSubmit(() => childRef.current.showModal())}>
-            <div className='card-body'>
-              <div>
-                <label>Name</label>
-                <input
-                  className='form-input'
-                  type='text'
-                  {...register('name')}
-                />
-                <p className='form-err-msg'>{errors.name?.message}</p>
+          <FormProvider {...methods}>
+            <form
+              onSubmit={methods.handleSubmit(() =>
+                childRef.current.showModal()
+              )}
+            >
+              <div className='card-body'>
+                <div>
+                  <label>Name</label>
+                  <FormInput label='name' type='text' />
+                  <FormInputError
+                    errorMessage={methods.formState.errors.name?.message}
+                  />
+                </div>
+                <div>
+                  <label>Age</label>
+                  <FormInput label='age' type='number' />
+                  <FormInputError
+                    errorMessage={methods.formState.errors.age?.message}
+                  />
+                </div>
+                <div>
+                  <label>Password</label>
+                  <FormInput label='password' type='password' />
+                  <FormInputError
+                    errorMessage={methods.formState.errors.password?.message}
+                  />
+                </div>
               </div>
-              <div>
-                <label>Age</label>
-                <input
-                  className='form-input'
-                  type='number'
-                  {...register('age')}
-                />
-                <p className='form-err-msg'>{errors.age?.message}</p>
+              <div className='flex justify-end mt-4'>
+                <Button label='Create' />
               </div>
-              <div>
-                <label>Password</label>
-                <input
-                  className='form-input'
-                  type='password'
-                  {...register('password')}
-                />
-                <p className='form-err-msg'>{errors.password?.message}</p>
-              </div>
-            </div>
-            <div className='card-action'>
-              <button className='form-submit' type='submit'>
-                Create
-              </button>
-            </div>
-          </form>
+            </form>
+          </FormProvider>
         </div>
         <Modal
           title='Confirm'
