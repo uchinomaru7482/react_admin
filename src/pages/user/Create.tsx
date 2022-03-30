@@ -7,7 +7,8 @@ import * as yup from 'yup'
 import Modal from '../../components/organisms/Modal'
 import Button from '../../components/atoms/Button'
 import FormInput from '../../components/atoms/FormInput'
-import FormInputError from '../../components/atoms/FormInputError'
+import ErrorMessage from '../../components/atoms/ErrorMessage'
+import InputForm from '../../components/molecules/InputForm'
 import { ToastContext, ToastKind } from '../../contexts/ToastContext'
 
 type FormInput = {
@@ -60,23 +61,23 @@ const UserCreate: React.VFC = React.memo(() => {
             >
               <div className='card-body'>
                 <div>
-                  <label>Name</label>
-                  <FormInput label='name' type='text' />
-                  <FormInputError
+                  <InputForm
+                    label='name'
+                    type='text'
                     errorMessage={methods.formState.errors.name?.message}
                   />
                 </div>
                 <div>
-                  <label>Age</label>
-                  <FormInput label='age' type='number' />
-                  <FormInputError
+                  <InputForm
+                    label='age'
+                    type='number'
                     errorMessage={methods.formState.errors.age?.message}
                   />
                 </div>
                 <div>
-                  <label>Password</label>
-                  <FormInput label='password' type='password' />
-                  <FormInputError
+                  <InputForm
+                    label='password'
+                    type='password'
                     errorMessage={methods.formState.errors.password?.message}
                   />
                 </div>

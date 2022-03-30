@@ -12,7 +12,7 @@ const FormInput: React.VFC<Props> = (props) => {
   return (
     <>
       <input
-        className='w-full mt-2 mb-1 p-2 border rounded-md focus:outline-none focus:ring focus:border-indigo-600'
+        className='w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-indigo-600'
         type={props.type}
         {...register(props.label)}
       />

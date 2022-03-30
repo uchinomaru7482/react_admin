@@ -4,7 +4,7 @@ type Props = {
   errorMessage: string | undefined
 }
 
-const FormInputError: React.VFC<Props> = (props) => {
+const ErrorMessage: React.VFC<Props> = (props) => {
   return (
     <>
       <p className='text-left text-pink-500'>{props.errorMessage}</p>
@@ -12,4 +12,4 @@ const FormInputError: React.VFC<Props> = (props) => {
   )
 }
 
-export default FormInputError
+export default ErrorMessage
