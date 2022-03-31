@@ -2,6 +2,7 @@ import React from 'react'
 
 import FormInput from '../../components/atoms/FormInput'
 import ErrorMessage from '../../components/atoms/ErrorMessage'
+import Label from '../atoms/Label'
 import filter from '../../utils/filter'
 
 type Props = {
@@ -14,7 +15,7 @@ const InputForm: React.VFC<Props> = (props) => {
   return (
     <>
       <div className='mb-2'>
-        <label>{filter.toUpperCamelCase(props.label)}</label>
+        <Label text={filter.toUpperCamelCase(props.label)} />
       </div>
       <div className='mb-1'>
         <FormInput label={props.label} type={props.type} />
