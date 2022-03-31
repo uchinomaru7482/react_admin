@@ -34,17 +34,19 @@ const App: React.VFC = () => {
             } fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden`}
           />
           <Sidebar isOpenSidebar={isOpenSidebar} />
-          <div className='flex-1 flex-col overflow-hidden'>
+          <div className='flex-1 overflow-hidden'>
             <Header
               toggleIsOpenSidebar={toggleIsOpenSidebar}
               signout={signout}
             />
-            <Routes>
-              <Route path='/signin' element={<Signin signin={signin} />} />
-              <Route path='/dashboard' element={<Dashboard />} />
-              <Route path='/user/list' element={<UserList />} />
-              <Route path='/user/create' element={<UserCreate />} />
-            </Routes>
+            <div className='h-full overflow-scroll'>
+              <Routes>
+                <Route path='/signin' element={<Signin signin={signin} />} />
+                <Route path='/dashboard' element={<Dashboard />} />
+                <Route path='/user/list' element={<UserList />} />
+                <Route path='/user/create' element={<UserCreate />} />
+              </Routes>
+            </div>
           </div>
         </ToastProvider>
       </div>

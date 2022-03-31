@@ -7,9 +7,7 @@ type Props = {
 const Frame: React.VFC<Props> = ({ children }) => {
   return (
     <>
-      <div className='container mx-auto px-8 pt-6 overflow-scroll'>
-        {children}
-      </div>
+      <div className='container mx-auto px-8 pt-6 pb-20'>{children}</div>
     </>
   )
 }

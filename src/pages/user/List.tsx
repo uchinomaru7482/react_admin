@@ -1,56 +1,21 @@
 import React from 'react'
 
+import Frame from '../../components/atoms/Frame'
+import PageTitle from '../../components/atoms/PageTitle'
+import Card from '../../components/atoms/Card'
+import UserListTable from '../../components/organisms/UserListTable'
+
 const UserList: React.VFC = React.memo(() => {
-  const userList = [
-    { id: 1, name: 'Tanaka', age: 14 },
-    { id: 2, name: 'Sato', age: 23 },
-    { id: 3, name: 'Kato', age: 31 }
-  ]
   return (
     <>
-      <div className='frame'>
-        <h2 className='page-title'>UserList</h2>
-        <div className='py-4 overflow-x-auto'>
-          <div className='wrap-table'>
-            <table className='table'>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Age</th>
-                  <th>Edit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {userList.map((user) => (
-                  <tr key={user.id}>
-                    <td>
-                      <p>{user.id}</p>
-                    </td>
-                    <td>
-                      <p>{user.name}</p>
-                    </td>
-                    <td>
-                      <p>{user.age}</p>
-                    </td>
-                    <td>
-                      <button className='warn-button' type='button'>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className='pagination'>
-              <div>
-                <button className='mr-2'>Prev</button>
-                <button>Next</button>
-              </div>
-            </div>
-          </div>
+      <Frame>
+        <div className='mb-4'>
+          <PageTitle text='UserList' />
         </div>
-      </div>
+        <Card>
+          <UserListTable />
+        </Card>
+      </Frame>
     </>
   )
 })
