@@ -1,58 +1,33 @@
 import React from 'react'
 
-import TableHeader from '../atoms/TableHeader'
-import TableData from '../atoms/TableData'
-
-type User = {
-  id: string
-  name: string
-  age: string
-}
+import Table from '../../components/molecules/Table'
+import Button from '../atoms/Button'
+import Pagination from '../molecules/Pagination'
 
 const UserListTable: React.VFC = () => {
   const headers = ['ID', 'Name', 'Age', 'Edit']
   const userList = [
-    { id: 1, name: 'Tanaka', age: 14 },
-    { id: 2, name: 'Sato', age: 23 },
-    { id: 3, name: 'Kato', age: 31 },
-    { id: 1, name: 'Tanaka', age: 14 },
-    { id: 2, name: 'Sato', age: 23 },
-    { id: 3, name: 'Kato', age: 31 },
-    { id: 1, name: 'Tanaka', age: 14 },
-    { id: 2, name: 'Sato', age: 23 },
-    { id: 3, name: 'Kato', age: 31 }
+    ['1', 'Tanaka', '14'],
+    ['2', 'Sato', '23'],
+    ['3', 'Kato', '31']
   ]
+  const userDelete = () => {
+    console.log('user delete')
+  }
+  const replace = {
+    header: 'Edit',
+    reactNode: <Button label='Delete' type='Warn' callback={userDelete} />
+  }
+  const pagination = () => {
+    console.log('pagination')
+  }
+
   return (
     <>
-      <table className='min-w-full'>
-        <thead>
-          <tr>
-            {headers.map((header, index) => (
-              <TableHeader text={header} key={index} />
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {userList.map((user, index) => (
-            <tr key={index}>
-              {(Object.keys(user) as (keyof User)[]).map((key, index) => (
-                <TableData text={String(user[key])} key={index} />
-              ))}
-              <td className='px-5 py-3 text-sm text-left border-b border-gray-200'>
-                <button className='warn-button' type='button'>
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className='pagination'>
-        <div>
-          <button className='mr-2'>Prev</button>
-          <button>Next</button>
-        </div>
+      <div className='pb-5'>
+        <Table headers={headers} contents={userList} replace={replace} />
       </div>
+      <Pagination prevCallback={pagination} nextCallback={pagination} />
     </>
   )
 }

@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
 import Modal from '../../components/organisms/Modal'
-import Button from '../../components/atoms/Button'
+import FormButton from '../atoms/FormButton'
 import FormInput from '../../components/atoms/FormInput'
 import InputForm from '../../components/molecules/InputForm'
 import { ToastContext, ToastKind } from '../../contexts/ToastContext'
@@ -72,7 +72,7 @@ const UserCreateForm: React.VFC = () => {
             ))}
           </div>
           <div className='flex justify-end mt-4'>
-            <Button label='Create' />
+            <FormButton label='Create' />
           </div>
         </form>
       </FormProvider>
