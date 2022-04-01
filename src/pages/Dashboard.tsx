@@ -13,6 +13,9 @@ import {
 } from 'chart.js'
 import { Doughnut, Line } from 'react-chartjs-2'
 
+import Frame from '../components/atoms/Frame'
+import Card from '../components/atoms/Card'
+import PageTitle from '../components/atoms/PageTitle'
 import SimpleCard from '../components/organisms/SimpleCard'
 
 ChartJS.register(
@@ -88,28 +91,52 @@ const Dashboard: React.VFC = React.memo(() => {
     ]
   }
 
+  const simpleCardData = [
+    {
+      title: 'New Users',
+      content: '1,504',
+      icon: <BiUserPlus className='h-8 w-8 text-white' />
+    },
+    {
+      title: 'Daily Active Users',
+      content: '65,033',
+      icon: <BiUser className='h-8 w-8 text-white' />
+    },
+    {
+      title: 'Daily Sales',
+      content: '2,560,000',
+      icon: <BiYen className='h-8 w-8 text-white' />
+    }
+  ]
+
   return (
     <>
-      <div className='frame'>
-        <h2 className='page-title'>Dashboard</h2>
-        <div className='grid grid-cols-3 gap-4 mt-4'>
-          <SimpleCard title='New Users' content='1,504'>
-            <BiUserPlus className='h-8 w-8 text-white' />
-          </SimpleCard>
-          <SimpleCard title='Daily Active Users' content='65,033'>
-            <BiUser className='h-8 w-8 text-white' />
-          </SimpleCard>
-          <SimpleCard title='Daily Sales' content='2,560,000'>
-            <BiYen className='h-8 w-8 text-white' />
-          </SimpleCard>
-          <div className='row-span-2 px-5 py-6 shadow-sm rounded-md bg-white'>
-            <Doughnut options={doughOptions} data={doughnutData} />
+      <Frame>
+        <div className='mb-4'>
+          <PageTitle text='Dashboard' />
+        </div>
+        <div className='grid grid-cols-1 gap-4 lg:grid-cols-3'>
+          {simpleCardData.map((simpleCard, index) => (
+            <SimpleCard
+              title={simpleCard.title}
+              content={simpleCard.content}
+              key={index}
+            >
+              {simpleCard.icon}
+            </SimpleCard>
+          ))}
+          <div className='row-span-2'>
+            <Card>
+              <Doughnut options={doughOptions} data={doughnutData} />
+            </Card>
           </div>
-          <div className='row-span-2 col-span-2 px-5 py-6 shadow-sm rounded-md bg-white'>
-            <Line options={lineOptions} data={lineData} />
+          <div className='row-span-2 col-span-2'>
+            <Card>
+              <Line options={lineOptions} data={lineData} />
+            </Card>
           </div>
         </div>
-      </div>
+      </Frame>
     </>
   )
 })
