@@ -72,7 +72,7 @@ const UserCreateForm: React.VFC = () => {
             ))}
           </div>
           <div className='flex justify-end mt-4'>
-            <FormButton label='Create' />
+            <FormButton label='Create' size='' />
           </div>
         </form>
       </FormProvider>
