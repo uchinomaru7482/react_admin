@@ -16,7 +16,9 @@ const UserListTable: React.VFC = () => {
   }
   const replace = {
     header: 'Edit',
-    reactNode: <Button label='Delete' type='Warn' callback={userDelete} />
+    reactNode: (
+      <Button label='Delete' type='Warn' size='' callback={userDelete} />
+    )
   }
   const pagination = () => {
     console.log('pagination')

@@ -14,7 +14,7 @@ const FormButton: React.VFC<Props> = (props) => {
   return (
     <>
       <button
-        className={`${size} px-4 py-2 bg-gray-800 text-gray-200 rounded-md hover:bg-gray-700 focus:bg-gray-700`}
+        className={`${size} px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600`}
         type='submit'
       >
         {props.label}
