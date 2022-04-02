@@ -13,8 +13,10 @@ const SimpleCard: React.VFC<Props> = (props) => {
     <>
       <Card>
         <div className='flex'>
-          <div className='p-3 mr-5 rounded-full bg-indigo-600 bg-opacity-75'>
-            {props.children}
+          <div>
+            <div className='p-3 mr-5 rounded-full bg-indigo-600 bg-opacity-75'>
+              {props.children}
+            </div>
           </div>
           <div>
             <h4 className='text-2xl font-semibold text-gray-700'>

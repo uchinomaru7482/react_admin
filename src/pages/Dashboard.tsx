@@ -115,7 +115,7 @@ const Dashboard: React.VFC = React.memo(() => {
         <div className='mb-4'>
           <PageTitle text='Dashboard' />
         </div>
-        <div className='grid grid-cols-1 gap-4 lg:grid-cols-3'>
+        <div className='grid grid-cols-1 gap-4 md:grid-cols-3'>
           {simpleCardData.map((simpleCard, index) => (
             <SimpleCard
               title={simpleCard.title}
@@ -130,7 +130,7 @@ const Dashboard: React.VFC = React.memo(() => {
               <Doughnut options={doughOptions} data={doughnutData} />
             </Card>
           </div>
-          <div className='row-span-2 col-span-2'>
+          <div className='row-span-2 col-span-1 md:col-span-2'>
             <Card>
               <Line options={lineOptions} data={lineData} />
             </Card>
