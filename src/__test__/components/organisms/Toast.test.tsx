@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react'
-import Toast from '../../components/organisms/Toast'
+
+import Toast from '../../../components/organisms/Toast'
 
 describe('Rendering', () => {
   test('Toast snap shot test', () => {
