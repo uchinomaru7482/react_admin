@@ -4,8 +4,10 @@ import TableHeader from '../atoms/TableHeader'
 import TableData from '../../components/atoms/TableData'
 
 type Props = {
-  headers: string[]
-  contents: string[][]
+  tableData: {
+    headers: string[]
+    contents: string[][]
+  }
   replace: { header: string; reactNode: ReactNode } | null
 }
 
@@ -15,15 +17,15 @@ const Table: React.VFC<Props> = (props) => {
       <table className='min-w-full'>
         <thead>
           <tr>
-            {props.headers.map((header, index) => (
+            {props.tableData.headers.map((header, index) => (
               <TableHeader text={header} key={index} />
             ))}
           </tr>
         </thead>
         <tbody>
-          {props.contents.map((content, index) => (
+          {props.tableData.contents.map((content, index) => (
             <tr key={index}>
-              {props.headers.map((header, index) =>
+              {props.tableData.headers.map((header, index) =>
                 header === props.replace?.header ? (
                   <TableData data={props.replace.reactNode} key={index} />
                 ) : (

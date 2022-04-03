@@ -1,35 +1,28 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 import Table from '../../components/molecules/Table'
-import Button from '../atoms/Button'
 import Pagination from '../molecules/Pagination'
 
-const UserListTable: React.VFC = () => {
-  const headers = ['ID', 'Name', 'Age', 'Edit']
-  const userList = [
-    ['1', 'Tanaka', '14'],
-    ['2', 'Sato', '23'],
-    ['3', 'Kato', '31']
-  ]
-  const userDelete = () => {
-    console.log('user delete')
+type Props = {
+  tableData: {
+    headers: string[]
+    contents: string[][]
   }
-  const replace = {
-    header: 'Edit',
-    reactNode: (
-      <Button label='Delete' type='Warn' size='' callback={userDelete} />
-    )
-  }
-  const pagination = () => {
-    console.log('pagination')
-  }
+  replace: { header: string; reactNode: ReactNode } | null
+  prevCallback: () => void
+  nextCallback: () => void
+}
 
+const UserListTable: React.VFC<Props> = (props) => {
   return (
     <>
       <div className='pb-5'>
-        <Table headers={headers} contents={userList} replace={replace} />
+        <Table tableData={props.tableData} replace={props.replace} />
       </div>
-      <Pagination prevCallback={pagination} nextCallback={pagination} />
+      <Pagination
+        prevCallback={props.prevCallback}
+        nextCallback={props.nextCallback}
+      />
     </>
   )
 }
