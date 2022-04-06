@@ -1,12 +1,15 @@
 package main
 
 import (
-	"net/http"
+	"react_admin/src/interfaces"
+
+	"github.com/labstack/echo/v4"
 )
 
 func main() {
-	server := http.Server{
-		Addr: ":8080",
-	}
-	server.ListenAndServe()
+	e := echo.New()
+	e.GET("/user", interfaces.GetUsers)
+	e.POST("/user", interfaces.CreateUsers)
+	e.DELETE("/user/:id", interfaces.DeleteUsers)
+	e.Logger.Fatal(e.Start(":1323"))
 }
