@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 
 import Frame from '../../components/atoms/Frame'
 import PageTitle from '../../components/atoms/PageTitle'
@@ -6,15 +7,16 @@ import Card from '../../components/atoms/Card'
 import Button from '../../components/atoms/Button'
 import UserListTable from '../../components/organisms/UserListTable'
 
+type User = {
+  id: number
+  name: string
+  email: string
+}
+
 const UserList: React.VFC = React.memo(() => {
-  const tableData = {
-    headers: ['ID', 'Name', 'Age', 'Edit'],
-    contents: [
-      ['1', 'Tanaka', '14'],
-      ['2', 'Sato', '23'],
-      ['3', 'Kato', '31']
-    ]
-  }
+  const headers = ['Id', 'Name', 'Email', 'Edit']
+  const [userList, setUserList] = useState([] as User[])
+  const updateUserList = (data: User[]) => setUserList(data)
   const userDelete = () => {
     console.log('user delete')
   }
@@ -28,6 +30,19 @@ const UserList: React.VFC = React.memo(() => {
     console.log('pagination')
   }
 
+  useEffect(() => {
+    console.log('fetch user list')
+    const getUserList = async () => {
+      try {
+        const res = await axios.get('http://localhost:1323/user')
+        updateUserList(res.data as User[])
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getUserList()
+  }, [])
+
   return (
     <>
       <Frame>
@@ -36,7 +51,8 @@ const UserList: React.VFC = React.memo(() => {
         </div>
         <Card>
           <UserListTable
-            tableData={tableData}
+            headers={headers}
+            userList={userList}
             replace={replace}
             prevCallback={pagination}
             nextCallback={pagination}

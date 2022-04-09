@@ -8,7 +8,7 @@ type Props = {
     headers: string[]
     contents: string[][]
   }
-  replace: { header: string; reactNode: ReactNode } | null
+  replace?: { header: string; reactNode: ReactNode }
 }
 
 const Table: React.VFC<Props> = (props) => {
