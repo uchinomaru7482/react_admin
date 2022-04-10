@@ -18,7 +18,7 @@ type GetUsersResponse struct {
 	TotalPage int    `json:"totalPage"`
 }
 
-const parPage = 2
+const parPage = 5
 
 var usersMaster = []User{
 	{Id: 1, Name: "Tanaka", Email: "tanaka@example.com"},
@@ -26,6 +26,14 @@ var usersMaster = []User{
 	{Id: 3, Name: "Murata", Email: "murata@example.com"},
 	{Id: 4, Name: "Daiki", Email: "daiki@example.com"},
 	{Id: 5, Name: "Jon", Email: "jon@example.com"},
+	{Id: 6, Name: "Kanta", Email: "kanta@example.com"},
+	{Id: 7, Name: "Chika", Email: "chika@example.com"},
+	{Id: 8, Name: "Sato", Email: "sato@example.com"},
+	{Id: 9, Name: "Mike", Email: "mike@example.com"},
+	{Id: 10, Name: "Masamune", Email: "masamune@example.com"},
+	{Id: 11, Name: "Miro", Email: "miro@example.com"},
+	{Id: 12, Name: "Ren", Email: "ren@example.com"},
+	{Id: 13, Name: "Kai", Email: "kai@example.com"},
 }
 
 func GetUsers(c echo.Context) error {
