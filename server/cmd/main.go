@@ -14,7 +14,7 @@ func main() {
 		AllowOrigins: []string{"http://localhost:3000"},
 		AllowMethods: []string{http.MethodGet, http.MethodPut, http.MethodPost, http.MethodDelete},
 	}))
-	e.GET("/user", interfaces.GetUsers)
+	e.GET("/users/:page", interfaces.GetUsers)
 	e.POST("/user", interfaces.CreateUsers)
 	e.DELETE("/user/:id", interfaces.DeleteUsers)
 	e.Logger.Fatal(e.Start(":1323"))

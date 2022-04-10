@@ -1,7 +1,6 @@
 package interfaces
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -14,7 +13,14 @@ type User struct {
 	Email string `json:"email"`
 }
 
-var users = []User{
+type GetUsersResponse struct {
+	Users     []User `json:"users"`
+	TotalPage int    `json:"totalPage"`
+}
+
+const parPage = 2
+
+var usersMaster = []User{
 	{Id: 1, Name: "Tanaka", Email: "tanaka@example.com"},
 	{Id: 2, Name: "Kana", Email: "kana@example.com"},
 	{Id: 3, Name: "Murata", Email: "murata@example.com"},
@@ -23,7 +29,27 @@ var users = []User{
 }
 
 func GetUsers(c echo.Context) error {
-	return c.JSON(http.StatusOK, users)
+	page, err := strconv.Atoi(c.Param("page"))
+	if err != nil {
+		return err
+	}
+
+	totalPage := len(usersMaster) / parPage
+	if len(usersMaster)%parPage >= 0 {
+		totalPage += 1
+	}
+	startIndex := (page - 1) * parPage
+	endIndex := page * parPage
+	if page >= totalPage {
+		endIndex = len(usersMaster)
+	}
+	users := usersMaster[startIndex:endIndex]
+
+	res := GetUsersResponse{
+		Users:     users,
+		TotalPage: totalPage,
+	}
+	return c.JSON(http.StatusOK, res)
 }
 
 func CreateUsers(c echo.Context) error {
@@ -31,21 +57,19 @@ func CreateUsers(c echo.Context) error {
 	if err := c.Bind(&user); err != nil {
 		return err
 	}
-	users = append(users, user)
+	usersMaster = append(usersMaster, user)
 	return c.NoContent(http.StatusNoContent)
 }
 
 func DeleteUsers(c echo.Context) error {
-	fmt.Println("delete users")
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		return err
 	}
-	fmt.Println(id)
 
-	for i, v := range users {
+	for i, v := range usersMaster {
 		if v.Id == id {
-			users = append(users[:i], users[i+1:]...)
+			usersMaster = append(usersMaster[:i], usersMaster[i+1:]...)
 		}
 	}
 	return c.NoContent(http.StatusNoContent)
