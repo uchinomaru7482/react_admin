@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 
 type Props = {
-  data: string | ReactNode
+  data: string | number | ReactNode
 }
 
 const TableData: React.VFC<Props> = (props) => {

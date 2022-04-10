@@ -1,43 +1,32 @@
 import React, { ReactNode } from 'react'
 
-import Table from '../../components/molecules/Table'
+import Button from '../atoms/Button'
+import Table from '../molecules/Table'
 import Pagination from '../molecules/Pagination'
 
 type Props = {
-  headers: string[]
-  userList: { id: number; name: string; email: string }[]
-  replace?: { header: string; reactNode: ReactNode }
+  userList: { id: number; name: string; email: string; edit?: ReactNode }[]
+  deleteCallback: (id: number) => void
   prevCallback: () => void
   nextCallback: () => void
 }
 
-type User = {
-  id: number
-  name: string
-  email: string
-}
-
-type TableData = {
-  headers: string[]
-  contents: string[][]
-}
-
 const UserListTable: React.VFC<Props> = (props) => {
-  const tableData: TableData = {
-    headers: props.headers,
-    contents: []
-  }
   props.userList.forEach((user) => {
-    const row: string[] = []
-    ;(Object.keys(user) as (keyof User)[]).forEach((key) => {
-      row.push(String(user[key]))
-    })
-    tableData.contents.push(row)
+    user.edit = (
+      <Button
+        label='Delete'
+        type='Warn'
+        size=''
+        callback={() => props.deleteCallback(user.id)}
+      />
+    )
   })
+
   return (
     <>
       <div className='pb-5'>
-        <Table tableData={tableData} replace={props.replace} />
+        <Table tableData={props.userList} />
       </div>
       <Pagination
         prevCallback={props.prevCallback}

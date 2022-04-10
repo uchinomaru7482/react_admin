@@ -1,14 +1,13 @@
-import React, { ReactNode } from 'react'
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from 'react'
 
 import TableHeader from '../atoms/TableHeader'
-import TableData from '../../components/atoms/TableData'
+import TableData from '../atoms/TableData'
 
 type Props = {
-  tableData: {
-    headers: string[]
-    contents: string[][]
-  }
-  replace?: { header: string; reactNode: ReactNode }
+  tableData: { [key: string]: any }[]
 }
 
 const Table: React.VFC<Props> = (props) => {
@@ -17,21 +16,18 @@ const Table: React.VFC<Props> = (props) => {
       <table className='min-w-full'>
         <thead>
           <tr>
-            {props.tableData.headers.map((header, index) => (
-              <TableHeader text={header} key={index} />
-            ))}
+            {props.tableData.length !== 0 &&
+              Object.keys(props.tableData[0]).map((key, index) => (
+                <TableHeader text={key} key={index} />
+              ))}
           </tr>
         </thead>
         <tbody>
-          {props.tableData.contents.map((content, index) => (
+          {props.tableData.map((data, index) => (
             <tr key={index}>
-              {props.tableData.headers.map((header, index) =>
-                header === props.replace?.header ? (
-                  <TableData data={props.replace.reactNode} key={index} />
-                ) : (
-                  <TableData data={content[index]} key={index} />
-                )
-              )}
+              {Object.keys(data).map((key, index) => (
+                <TableData data={data[key]} key={index} />
+              ))}
             </tr>
           ))}
         </tbody>
