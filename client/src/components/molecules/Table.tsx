@@ -5,6 +5,7 @@ import React from 'react'
 
 import TableHeader from '../atoms/TableHeader'
 import TableData from '../atoms/TableData'
+import filters from '../../utils/filter'
 
 type Props = {
   tableData: { [key: string]: any }[]
@@ -18,7 +19,7 @@ const Table: React.VFC<Props> = (props) => {
           <tr>
             {props.tableData.length !== 0 &&
               Object.keys(props.tableData[0]).map((key, index) => (
-                <TableHeader text={key} key={index} />
+                <TableHeader text={filters.toUpperCamelCase(key)} key={index} />
               ))}
           </tr>
         </thead>
